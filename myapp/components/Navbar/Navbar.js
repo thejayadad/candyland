@@ -1,25 +1,39 @@
 'use client'
-import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const Navbar = () => {
-  return (
-    <header className='bg-red-300 md:h-36 sm:h-24 px-4 py-8'>
-        <div className='flex justify-between max-w-screen-2xl items-center'>
-            <Link href={'/'}>LOGO</Link>
-            <div>
-            <Link href={'/'}>LOGO</Link>
-            <Link href={'/'}>LOGO</Link>
-            <Link href={'/'}>LOGO</Link>
-            <Link href={'/'}>LOGO</Link>
-            </div>
-            <div>
-            <Link href={'/login'}>Login</Link>
-            <Link href={'/register'}>Register</Link>
-            </div>
-        </div>
-    </header>
-  )
-}
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
 
-export default Navbar
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  return (
+<header class="text-gray-600 body-font px-4 py-24">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <Link href={'/'} class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        SweetsDreamDelight
+    </Link>
+    <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+      <a class="mr-5 hover:text-gray-900">First Link</a>
+      <a class="mr-5 hover:text-gray-900">Second Link</a>
+      <a class="mr-5 hover:text-gray-900">Third Link</a>
+      <a class="mr-5 hover:text-gray-900">Fourth Link</a>
+    </nav>
+    <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+        Logout
+    </button>
+  </div>
+</header>
+  );
+};
+
+export default Navbar;
